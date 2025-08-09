@@ -59,7 +59,7 @@ function populateHeroSection() {
             <i class="fas fa-phone"></i> ${personalInfo.phone}
         </a>
         <a href="https://linkedin.com/in/${personalInfo.linkedin}" class="contact-link" target="_blank">
-            <i class="fab fa-linkedin"></i> ${personalInfo.linkedin}
+            <i class="fab fa-linkedin"></i> ${personalInfo.linkedinDisplay}
         </a>
     `;
     
