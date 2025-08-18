@@ -139,24 +139,125 @@ function populateSkillsSection() {
     `).join('');
 }
 
+// Helper function to get logo for certificate providers
+const logoMap = {
+    'Google Skillshop': 'logos/google_logo.jpeg',
+    'HubSpot': 'logos/hubspot_logo.jpeg',
+    'Alliance Française Madras': 'logos/french_logo.jpeg'
+};
+
+function getDefaultIcon(provider) {
+    return logoMap[provider] || null;
+}
+
 // Populate certificates section
 function populateCertificatesSection() {
     const { certificates } = portfolioData;
     const certificatesGrid = document.getElementById('certificates-grid');
     
-    certificatesGrid.innerHTML = certificates.map(cert => `
-        <div class="certificate-card">
-            <div class="certificate-icon">
-                <i class="${cert.icon}"></i>
+    if (!certificates || certificates.length === 0) {
+        console.error('No certificates data found');
+        return;
+    }
+    
+    certificatesGrid.innerHTML = certificates.map(cert => {
+        let actionButtons = '';
+        
+        // Add action buttons based on certificate type
+        if (cert.link) {
+            // External link certificate
+            actionButtons = `
+                <div class="certificate-actions">
+                    <a href="${cert.link}" target="_blank" class="certificate-btn certificate-btn-primary">
+                        <i class="fas fa-external-link-alt"></i> View Certificate
+                    </a>
+                </div>
+            `;
+        } else if (cert.pdfFile) {
+            // PDF certificate with preview
+            actionButtons = `
+                <div class="certificate-actions">
+                    <button onclick="openPdfModal('${cert.pdfFile}', '${cert.title}')" class="certificate-btn certificate-btn-primary">
+                        <i class="fas fa-eye"></i> Preview
+                    </button>
+                    <a href="${cert.pdfFile}" download class="certificate-btn certificate-btn-secondary">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+            `;
+        } else {
+            actionButtons = ``;
+        }
+        return `
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    ${cert.logo || logoMap[cert.provider] ? 
+                        `<img src="${cert.logo || getDefaultIcon(cert.provider)}" alt="${cert.provider} logo" class="certificate-logo">` :
+                        `<i class="fas fa-certificate"></i>`
+                    }
+                </div>
+                <div class="certificate-content">
+                    <h3>${cert.title}</h3>
+                    <p class="certificate-provider">${cert.provider}</p>
+                    <p class="certificate-description">${cert.description}</p>
+                    <span class="certificate-year">${cert.year}</span>
+                    ${actionButtons}
+                </div>
             </div>
-            <div class="certificate-content">
-                <h3>${cert.title}</h3>
-                <p class="certificate-provider">${cert.provider}</p>
-                <p class="certificate-description">${cert.description}</p>
-                <span class="certificate-year">${cert.year}</span>
-            </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
+}
+
+// PDF Modal functionality
+function openPdfModal(pdfUrl, title) {
+    const modal = document.getElementById('pdf-modal');
+    const iframe = document.getElementById('pdf-iframe');
+    const modalTitle = document.getElementById('pdf-modal-title');
+    const downloadLink = document.getElementById('pdf-download-link');
+    
+    // Set modal content
+    modalTitle.textContent = title;
+    iframe.src = pdfUrl;
+    downloadLink.href = pdfUrl;
+    
+    // Show modal
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closePdfModal() {
+    const modal = document.getElementById('pdf-modal');
+    const iframe = document.getElementById('pdf-iframe');
+    
+    // Hide modal
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    
+    // Clear iframe source to stop PDF loading
+    iframe.src = '';
+}
+
+// Initialize PDF modal event listeners
+function initializePdfModal() {
+    const modal = document.getElementById('pdf-modal');
+    const closeBtn = document.getElementById('pdf-modal-close');
+    
+    // Close modal when clicking close button
+    closeBtn.addEventListener('click', closePdfModal);
+    
+    // Close modal when clicking outside
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closePdfModal();
+        }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            closePdfModal();
+        }
+    });
 }
 
 // Populate awards section
@@ -342,6 +443,9 @@ function initializePortfolio() {
         }
     `;
     document.head.appendChild(style);
+
+    // Initialize PDF modal
+    initializePdfModal();
 }
 
 // Start loading the portfolio when the page loads

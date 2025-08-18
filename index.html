@@ -102,6 +102,24 @@
         </div>
     </section>
 
+    <!-- PDF Preview Modal -->
+    <div id="pdf-modal" class="pdf-modal">
+        <div class="pdf-modal-content">
+            <div class="pdf-modal-header">
+                <h3 id="pdf-modal-title">Certificate Preview</h3>
+                <span class="pdf-modal-close" id="pdf-modal-close">&times;</span>
+            </div>
+            <div class="pdf-modal-body">
+                <iframe id="pdf-iframe" src="" width="100%" height="600px" frameborder="0"></iframe>
+            </div>
+            <div class="pdf-modal-footer">
+                <a id="pdf-download-link" href="" class="btn btn-primary" download>
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Awards Section -->
     <section id="awards" class="awards">
         <div class="container">
@@ -254,32 +272,31 @@
   ],
   "certificates": [
     {
-     "title": "Google Ads Apps Certification",
+      "title": "Google Ads Apps Certification",
       "provider": "Google Skillshop",
-      "description": "Keywords,PPC,UTMs,User Engagement",
+      "description": "Keywords, PPC, UTMs, User Engagement",
       "year": "2025",
-      "icon": "fas fa-google"
+      "link": "https://skillshop.credential.net/70aa4319-98b3-4035-866b-0bc7ad92bbf3#acc.nrT8IcZu"
     },
     {
       "title": "Revenue Operations",
       "provider": "HubSpot",
       "description": "For professionals driving business growth ideation",
-      "year": "2023",
-      "icon": "fas fa-certificate"
+      "year": "2023"
     },
     {
       "title": "Sales Management",
       "provider": "HubSpot",
       "description": "Marketing analytics and automation process",
       "year": "2023",
-      "icon": "fas fa-chart-line"
+      "link": "https://app.hubspot.com/academy/achievements/wv4xbfts/en/1/janhavi-subodh-ambavkar/sales-management"
     },
     {
       "title": "French DELF B2",
       "provider": "Alliance Française Madras",
       "description": "Diploma of French-language studies",
       "year": "2020",
-      "icon": "fas fa-language"
+      "pdfFile": "certificates/french.pdf"
     }
   ],
   "awards": [
