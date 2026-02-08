@@ -21,7 +21,6 @@ This guide will help you update your portfolio without any HTML knowledge. Just 
   "name": "Your Name",
   "title": "Your Job Title",
   "email": "your.email@example.com",
-  "phone": "+91 9876543210",
   "linkedin": "your-linkedin-profile",
   "location": "Your City, Country",
   "summary": "Your professional summary..."
