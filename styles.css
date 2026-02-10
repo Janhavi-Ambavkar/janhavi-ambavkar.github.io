@@ -635,7 +635,7 @@ section {
 /* Certificates Section */
 .certificates-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
 }
 
@@ -949,7 +949,7 @@ section {
     .skill-category,
     .highlight,
     .award-card {
-        padding: 2rem 1.5rem;
+        padding: 2rem 1.25rem;
         border-radius: 24px;
     }
 
@@ -996,6 +996,27 @@ section {
     .project-card-mini {
         width: 280px;
         padding: 1.5rem;
+    }
+
+    .certificates-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .certificate-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.75rem;
+        border-radius: 20px;
+    }
+
+    .certificate-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .certificate-btn {
+        width: 100%;
+        justify-content: center;
     }
 }
 

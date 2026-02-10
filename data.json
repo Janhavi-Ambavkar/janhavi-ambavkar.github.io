@@ -102,19 +102,39 @@
   "skills": [
     {
       "category": "Analytical Tools",
-      "skills": ["Google Analytics", "Power BI", "Meta Analytics", "Meta Pixel"]
+      "skills": [
+        "Google Analytics",
+        "Power BI",
+        "Meta Analytics",
+        "Meta Pixel"
+      ]
     },
     {
       "category": "Marketing & SEO",
-      "skills": ["SEO Test", "Performance Marketing", "Digital Marketing", "Social Media Marketing"]
+      "skills": [
+        "SEO Test",
+        "Performance Marketing",
+        "Digital Marketing",
+        "Social Media Marketing"
+      ]
     },
     {
       "category": "CRM & Automation",
-      "skills": ["Salesforce Pardot", "HubSpot", "Kaspr", "Mailchimp"]
+      "skills": [
+        "Salesforce Pardot",
+        "HubSpot",
+        "Kaspr",
+        "Mailchimp"
+      ]
     },
     {
       "category": "Business Tools",
-      "skills": ["SAP S/4 HANA", "Advanced MS Office", "Inventory Management", "Vendor Management"]
+      "skills": [
+        "SAP S/4 HANA",
+        "Advanced MS Office",
+        "Inventory Management",
+        "Vendor Management"
+      ]
     }
   ],
   "certificates": [
