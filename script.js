@@ -139,6 +139,7 @@ function populateSkillsSection() {
 
 // Helper function to get logo for certificate providers
 const logoMap = {
+    'Google': 'logos/google_logo.jpeg',
     'Google Skillshop': 'logos/google_logo.jpeg',
     'HubSpot': 'logos/hubspot_logo.jpeg',
     'Alliance Française Madras': 'logos/french_logo.jpeg'
